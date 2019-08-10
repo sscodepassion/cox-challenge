@@ -18,39 +18,44 @@ public class Vehicle {
 		return vehicleId;
 	}
 
-	public void setVehicleId(BigInteger vehicleId) {
+	public Vehicle setVehicleId(BigInteger vehicleId) {
 		this.vehicleId = vehicleId;
+		return this;
 	}
 
 	public Integer getYear() {
 		return year;
 	}
 
-	public void setYear(Integer year) {
+	public Vehicle setYear(Integer year) {
 		this.year = year;
+		return this;
 	}
 
 	public String getMake() {
 		return make;
 	}
 
-	public void setMake(String make) {
+	public Vehicle setMake(String make) {
 		this.make = make;
+		return this; 
 	}
 
 	public String getModel() {
 		return model;
 	}
 
-	public void setModel(String model) {
+	public Vehicle setModel(String model) {
 		this.model = model;
+		return this;
 	}
 
 	public BigInteger getDealerId() {
 		return dealerId;
 	}
 
-	public void setDealerId(BigInteger dealerId) {
+	public Vehicle setDealerId(BigInteger dealerId) {
 		this.dealerId = dealerId;
+		return this;
 	}
 }

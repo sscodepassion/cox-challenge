@@ -19,16 +19,18 @@ public class Dealer {
 		return dealerId;
 	}
 
-	public void setDealerId(BigInteger dealerId) {
+	public Dealer setDealerId(BigInteger dealerId) {
 		this.dealerId = dealerId;
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public Dealer setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	@Override

@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -77,7 +79,7 @@ public class OrchestrationDelegate {
 			}
 		}
 		
-		if (!dealerVehiclesMap.isEmpty()) {
+		if (!MapUtils.isEmpty(dealerVehiclesMap)) {
 			
 			/*
 			 * Submit the data to the Answer end point and return the response back to the Controller layer
@@ -112,7 +114,7 @@ public class OrchestrationDelegate {
 			final Map<BigInteger, CompletableFuture<Dealer>> dealerCFMap) throws InterruptedException, ExecutionException {
 		Map<Dealer, List<Vehicle>> dealerVehiclesMap = new HashMap<>();
 		
-		if (!vehicleCFList.isEmpty()) {
+		if (!vehicleCFList.isEmpty() && !dealerCFMap.isEmpty()) {
 			for (CompletableFuture<Vehicle> vehicleCF : vehicleCFList) {
 				if (!dealerVehiclesMap.containsKey(new Dealer(vehicleCF.get().getDealerId()))) {
 					List<Vehicle> vehiclesList = new ArrayList<>();
@@ -131,6 +133,8 @@ public class OrchestrationDelegate {
 		AnswerRequest answerRequest = new AnswerRequest();
 		List<VehicleDealerDataWrapper> vehicleDealerDataList = new ArrayList<>();
 		VehicleDealerDataWrapper vehicleDealerData = null;
+		// Remove Null keys if any from the Map
+		dealerVehiclesMap.keySet().removeIf(Objects::isNull);
 		for (Map.Entry<Dealer, List<Vehicle>> entry: dealerVehiclesMap.entrySet()) {
 			vehicleDealerData = new VehicleDealerDataWrapper()
 					.setDealerId(entry.getKey().getDealerId())
