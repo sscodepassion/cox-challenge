@@ -24,6 +24,14 @@ import com.cox.coredomain.service.DataSetService;
 import com.cox.coredomain.service.DealersService;
 import com.cox.coredomain.service.VehiclesService;
 
+
+/**
+ * @author sashanbh
+ * 
+ * This is the Delegate class to orchestrate calls to the Dataset, Vehicles & Dealers Services
+ * and aggregate the response to post the final answer
+ *
+ */
 @Component
 public class OrchestrationDelegate {
 

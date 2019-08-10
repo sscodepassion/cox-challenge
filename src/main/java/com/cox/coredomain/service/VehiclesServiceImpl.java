@@ -25,6 +25,12 @@ import org.springframework.web.server.ResponseStatusException;
 import com.cox.coredomain.model.Vehicle;
 import com.cox.coredomain.model.VehicleIDsWrapper;
 
+/**
+ * @author sashanbh
+ * 
+ * This is the Service Implementation for calling Vehicles Rest services 
+ *
+ */
 @Service
 public class VehiclesServiceImpl implements VehiclesService {
 
@@ -55,6 +61,13 @@ public class VehiclesServiceImpl implements VehiclesService {
 		}
 	}
 
+    /**
+     * @Async
+     * 
+     * This method will retrieve Vehicle details based on a Dataset and Vehicle Id asynchronously and
+     * return a Future object to improve response times when called multiple times. 
+     * 
+     */
 	@Override
 	@Async
 	public CompletableFuture<Vehicle> findVehicleForDataSetByVehicleId(final String datasetId, final BigInteger vehicleId) {

@@ -22,6 +22,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.cox.coredomain.model.Dealer;
 
+/**
+ * @author sashanbh
+ * 
+ * This is the Service Implementation for calling Dealers Rest services 
+ *
+ */
 @Service
 public class DealersServiceImpl implements DealersService {
 
@@ -35,6 +41,13 @@ public class DealersServiceImpl implements DealersService {
 	@Qualifier("api-uri")
 	private URI apiURI;
 	
+    /**
+     * @Async
+     * 
+     * This method will retrieve Dealer details based on a Dataset and Dealer Id asynchronously and
+     * return a Future object to improve response times when called multiple times. 
+     * 
+     */
 	@Override
 	@Async
 	public CompletableFuture<Dealer> findDealerForDataSetByDealerId(final String datasetId, final BigInteger dealerId) {

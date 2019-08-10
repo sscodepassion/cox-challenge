@@ -8,6 +8,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+
+/**
+ * @author sashanbh
+ * 
+ * This is the Main entry point of the Spring boot application
+ * Also configures & loads the ThreadPoolTaskExecutor for Asynchronous Beans 
+ *
+ */
 @SpringBootApplication
 @EnableAsync
 public class CoxProgrammingChallengeApplication {
@@ -21,7 +29,7 @@ public class CoxProgrammingChallengeApplication {
 		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 		
 		/*
-		 * Tuning of core pool size for the Thread pool done based on 2 CPU cores and based on 
+		 * Tuning of core pool size for the Thread pool done based on 2 CPU cores and  
 		 * (Wait time [max 4 seconds] / execution time [1 second]) of the Vehicles and Dealers API - [2 * (4/1)] = 8   
 		 * 
 		 */
