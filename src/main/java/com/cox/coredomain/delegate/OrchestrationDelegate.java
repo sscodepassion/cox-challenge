@@ -1,5 +1,6 @@
 package com.cox.coredomain.delegate;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +34,7 @@ public class OrchestrationDelegate {
 	@Autowired
 	private VehiclesService vehiclesService;
 	
-	public Optional<AnswerResponse> processAndSaveAnswer() throws InterruptedException, ExecutionException {
+	public Optional<AnswerResponse> processAndSaveAnswer() throws InterruptedException, ExecutionException, IOException {
 		
 		Map<Dealer, List<Vehicle>> dealerVehiclesMap = null;
 		

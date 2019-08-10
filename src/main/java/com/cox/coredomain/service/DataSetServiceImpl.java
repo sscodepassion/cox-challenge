@@ -38,7 +38,7 @@ public class DataSetServiceImpl implements DataSetService {
 	private URI apiURI;
 	
 	@Override
-	public Optional<String> retrieveDataSet() {
+	public Optional<String> retrieveDataSet() throws IOException {
 		
 		ResponseEntity<String> datasetIdResponse = restTemplate.exchange(join(apiURI, RESOURCE_DATASET), 
 				HttpMethod.GET, new HttpEntity<String>(createRequestHeader()), String.class);
@@ -48,13 +48,7 @@ public class DataSetServiceImpl implements DataSetService {
 		}
 		
 		String datasetId = null;
-		try {
-			datasetId = getDataSetID(datasetIdResponse.getBody());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		datasetId = getDataSetID(datasetIdResponse.getBody());
 		return Optional.of(datasetId);
 	}
 

@@ -1,5 +1,6 @@
 package com.cox.coredomain.controller;
 
+import java.io.IOException;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
@@ -23,7 +24,7 @@ public class ProgramController {
 	private OrchestrationDelegate orchestrationDelegate;
 	
 	@RequestMapping (value = "/startProcess", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<AnswerResponse> startProcess() throws InterruptedException, ExecutionException {
+	public ResponseEntity<AnswerResponse> startProcess() throws InterruptedException, ExecutionException, IOException {
 		
 		Optional<AnswerResponse> answerResponse = orchestrationDelegate.processAndSaveAnswer();
 		
